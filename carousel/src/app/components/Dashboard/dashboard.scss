@@ -1,5 +1,24 @@
+html {
+  height: 100vh;
+ }
+
+ #html {
+   height: 100vh;
+ }
+
+
 body {
   background: no-repeat top;
   background-size: cover;
   background-image: url('/background--dashboard.png');
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.dashboard__container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
