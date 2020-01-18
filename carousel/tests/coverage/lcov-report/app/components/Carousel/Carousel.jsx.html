@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for app/components/Dashboard/Dashboard.jsx</title>
+    <title>Code coverage report for app/components/Carousel/Carousel.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">app/components/Dashboard</a> Dashboard.jsx
+      <a href="../../../index.html">All files</a> / <a href="index.html">app/components/Carousel</a> Carousel.jsx
     </h1>
     <div class='clearfix'>
     </div>
@@ -35,30 +35,36 @@
 10
 11
 12
-13</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+13
+14
+15</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import bemHelper from '../../utils/bem'
-import Carousel from '../Carousel/Carousel'
-import './dashboard.scss';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
+import bemHelper from '../../utils/bem';
 &nbsp;
-const cn = bemHelper({ block: 'dashboard' })
+const cn = bemHelper({ block: 'carousel' });
 &nbsp;
-export default () =&gt; (
-  &lt;div className={cn('container')}&gt;
-    &lt;Carousel /&gt;
-  &lt;/div&gt;
-);
+class Carousel extends Component {
+  render() {
+    return (
+      &lt;ul className={cn('container')}&gt;&lt;/ul&gt;
+    )
+  }
+}
+&nbsp;
+export default Carousel;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
