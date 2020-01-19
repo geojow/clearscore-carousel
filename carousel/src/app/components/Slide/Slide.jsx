@@ -7,9 +7,9 @@ const cn = bemHelper({ block: 'slide' });
 
 const Slide = ({ slide }) =>
   <li className={cn('container')}>
-    <p className={cn("content-upper")}>{slide ? slide.upper : 'No Data'}</p>
-    <p className={cn("content-middle")}>{slide ? slide.middle : 'No Data'}</p>
-    <p className={cn("content-lower")}>{slide ? slide.lower : 'No Data'}</p>
+    <p className={cn("content-upper")}>{slide ? slide.upper : ''}</p>
+    <p className={cn("content-middle")}>{slide ? slide.middle : 'Loading'}</p>
+    <p className={cn("content-lower")}>{slide ? slide.lower : ''}</p>
   </li>
 
 Slide.propTypes = {
