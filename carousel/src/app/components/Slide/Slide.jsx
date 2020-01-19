@@ -24,7 +24,8 @@ Slide.propTypes = {
     id: PropTypes.string.isRequired,
     upper: PropTypes.string.isRequired,
     middle: PropTypes.string.isRequired,
-    lower: PropTypes.instanceOf(Object).isRequired,
+    lower:
+      PropTypes.string.isRequired | PropTypes.instanceOf(Object).isRequired,
     progress: PropTypes.number
   })
 };

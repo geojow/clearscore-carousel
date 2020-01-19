@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import bemHelper from "../../utils/bem";
+import { getJSON } from "../../utils/";
 import Carousel from "../Carousel/Carousel";
 import "./dashboard.scss";
 
@@ -15,9 +16,9 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    fetch("/api/creditReport")
-      .then(response => response.json())
-      .then(json => this.setState({ data: json.data }));
+    getJSON("/api/creditReport").then(json =>
+      this.setState({ data: json.data })
+    );
   }
 
   render() {
