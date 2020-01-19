@@ -14,6 +14,14 @@ class Carousel extends Component {
     numberOfSlides: 0
   }
 
+  componentDidMount() {
+    this.animation = setInterval(() => this.setIndex(this.state.slideIndex + 1), 5000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.animation)
+  }
+
   componentWillReceiveProps(props) {
     const { creditReport } = props;
     const slides = creditReport ? [{
