@@ -31,7 +31,7 @@ describe('mounted Carousel', () => {
   beforeEach(() => wrapper = mount(<Carousel />));
 
   it('it calls setIndex when a SlideSelector is clicked', () => {
-    wrapper.setState({ slides: [{ upper: "", middle: "", lower: "" }], numberOfSlides: 1 })
+    wrapper.setState({ slides: [{ id: '1', upper: "", middle: "", lower: "", progress: null }], numberOfSlides: 1 })
     const spy = jest.spyOn(wrapper.instance(), 'setIndex');
     wrapper.instance().forceUpdate();
     expect(spy).toHaveBeenCalledTimes(0);
@@ -46,13 +46,13 @@ describe('setIndex', () => {
   beforeEach(() => wrapper = mount(<Carousel />));
 
   it('it updates slideIndex', () => {
-    wrapper.setState({ slideIndex: 0, slides: [{ upper: "", middle: "", lower: "" }, { upper: "", middle: "", lower: "" }], numberOfSlides: 2 })
+    wrapper.setState({ slideIndex: 0, slides: [{ id: "1", upper: "", middle: "", lower: "", progress: null }, { id: "2", upper: "", middle: "", lower: "", progress: null }], numberOfSlides: 2 })
     wrapper.instance().setIndex(1);
     expect(wrapper.state('slideIndex')).toEqual(1);
   });
 
   it('it does not update slideIndex if you try to set the same index', () => {
-    wrapper.setState({ slideIndex: 1, slides: [{ upper: "", middle: "", lower: "" }, { upper: "", middle: "", lower: "" }], numberOfSlides: 2 })
+    wrapper.setState({ slideIndex: 1, slides: [{ id: "1", upper: "", middle: "", lower: "", progress: null }, { id: "2", upper: "", middle: "", lower: "", progress: null }], numberOfSlides: 2 })
     wrapper.instance().setIndex(1);
     expect(wrapper.state('slideIndex')).toEqual(1);
   });

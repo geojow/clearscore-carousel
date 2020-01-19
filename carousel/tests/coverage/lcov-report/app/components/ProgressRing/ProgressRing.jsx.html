@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for app/components/Slide/Slide.jsx</title>
+    <title>Code coverage report for app/components/ProgressRing/ProgressRing.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">app/components/Slide</a> Slide.jsx
+      <a href="../../../index.html">All files</a> / <a href="index.html">app/components/ProgressRing</a> ProgressRing.jsx
     </h1>
     <div class='clearfix'>
     </div>
@@ -54,16 +54,33 @@
 29
 30
 31
-32</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+32
+33
+34
+35
+36
+37</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -73,49 +90,47 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react'
-import PropTypes from 'prop-types'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import PropTypes from 'prop-types';
 import bemHelper from '../../utils/bem';
-import ProgressRing from '../ProgressRing/ProgressRing';
-import './slide.scss';
+import './progressring.scss'
 &nbsp;
-const cn = bemHelper({ block: 'slide' });
+const cn = bemHelper({ block: "progress-ring" })
 &nbsp;
-const Slide = ({ slide }) =&gt;
-  &lt;&gt;
-    &lt;li key={slide ? slide.id : ''} className={cn('container')}&gt;
-      &lt;p className={cn("content-upper")}&gt;{slide ? slide.upper : ''}&lt;/p&gt;
-      &lt;p className={cn("content-middle")}&gt;{slide ? slide.middle : 'Loading'}&lt;/p&gt;
-      &lt;p className={cn("content-lower")}&gt;{slide ? slide.lower : ''}&lt;/p&gt;
-    &lt;/li&gt;
-    {
-      slide &amp;&amp; slide.progress &amp;&amp; &lt;ProgressRing progress={slide.progress} /&gt;
-    }
-  &lt;/&gt;
+const ProgressRing = ({ progress }) =&gt; {
 &nbsp;
-Slide.propTypes = {
-  slide: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    upper: PropTypes.string.isRequired,
-    middle: PropTypes.string.isRequired,
-    lower: PropTypes.string.isRequired,
-    progress: PropTypes.number
-  })
+  const radius = 185
+  const stroke = 4
+  const normalisedRadius = radius - stroke * 2;
+  const circumference = normalisedRadius * 2 * Math.PI;
+&nbsp;
+  const strokeDashoffset = circumference - progress / 100 * circumference;
+&nbsp;
+  return (
+    &lt;svg className={cn('')}&gt;
+      &lt;circle
+        stroke="white"
+        fill="transparent"
+        strokeWidth={stroke}
+        strokeDasharray={circumference}
+        style={{ strokeDashoffset, '--test': "black" }}
+        r={normalisedRadius}
+        cx={radius}
+        cy={radius}
+      /&gt;
+    &lt;/svg&gt;)
 }
 &nbsp;
-export default Slide;
+ProgressRing.propTypes = {
+  progress: PropTypes.number.isRequired
+}
+&nbsp;
+export default ProgressRing;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import SlideSelector from "./SlideSelector";
 
-describe("Slide", () => {
+describe("SlideSelector", () => {
   let wrapper;
 
   beforeEach(

@@ -15,7 +15,7 @@ class Carousel extends Component {
   }
 
   componentDidMount() {
-    this.animation = setInterval(() => this.setIndex(this.state.slideIndex + 1), 5000)
+    this.animation = setInterval(() => this.setIndex(this.state.slideIndex + 1), 15000)
   }
 
   componentWillUnmount() {
@@ -28,12 +28,14 @@ class Carousel extends Component {
       id: 'scoreIndicator',
       upper: "Your credit score is",
       middle: creditReport.score.toString(),
-      lower: `out of ${creditReport.maxScoreValue}`
+      lower: `out of ${creditReport.maxScoreValue}`,
+      progress: Math.floor((creditReport.score / creditReport.maxScoreValue) * 100)
     }, {
       id: 'longTermDebt',
       upper: 'Your long term debt total',
       middle: `£${creditReport.currentLongTermDebt}`,
-      lower: creditReport.changeInLongTermDebt === 0 ? "No change from last month" : creditReport.changeInLongTermDebt < 0 ? `Down ${creditReport.changeInLongTermDebt} from last month` : `Up ${(creditReport.changeInLongTermDebt)} from last month`
+      lower: creditReport.changeInLongTermDebt === 0 ? "No change from last month" : creditReport.changeInLongTermDebt < 0 ? `Down ${creditReport.changeInLongTermDebt} from last month` : `Up ${(creditReport.changeInLongTermDebt)} from last month`,
+      progress: null
     }] : []
     this.setState({
       slides,
