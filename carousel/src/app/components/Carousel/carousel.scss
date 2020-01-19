@@ -1,3 +1,14 @@
+.carousel__container:before {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  filter: blur(10px);
+  background-image: url('/background--dashboard.png');
+  background-position: 50%;
+  border-radius: 50%;
+}
+
 .carousel__container {
   display: flex;
   position: relative;

@@ -7,9 +7,14 @@ const cn = bemHelper({ block: 'carousel' });
 
 class Carousel extends Component {
   render() {
+    const slide = {
+      upper: "Your credit score is",
+      middle: '350',
+      lower: "out of 700"
+    }
     return (
       <ul className={cn('container')}>
-        <Slide />
+        <Slide slide={slide} />
       </ul>
     )
   }
