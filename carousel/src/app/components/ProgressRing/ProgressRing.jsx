@@ -17,7 +17,6 @@ const ProgressRing = ({ progress }) => {
   return (
     <svg className={cn('')}>
       <circle
-        stroke="white"
         fill="transparent"
         strokeWidth={stroke}
         strokeDasharray={circumference}

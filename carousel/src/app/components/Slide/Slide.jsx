@@ -10,7 +10,7 @@ const Slide = ({ slide }) =>
   <>
     <li key={slide ? slide.id : ''} className={cn('container')}>
       <p className={cn("content-upper")}>{slide ? slide.upper : ''}</p>
-      <p className={cn("content-middle")}>{slide ? slide.middle : 'Loading'}</p>
+      <p className={cn("content-middle", slide && slide.id)}>{slide ? slide.middle : '...'}</p>
       <p className={cn("content-lower")}>{slide ? slide.lower : ''}</p>
     </li>
     {

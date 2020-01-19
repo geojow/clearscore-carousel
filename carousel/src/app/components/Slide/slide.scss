@@ -1,3 +1,7 @@
+$yellow: #F1DB75;
+$purple: #E2ACF7;
+
+
 .slide__container {
   height: 375px;
   width: 375px;
@@ -26,6 +30,14 @@ p {
 .slide__content-middle {
   font-size: 90px;
   font-weight: 100;
+}
+
+.slide__content-middle--scoreIndicator {
+  color: $yellow;
+}
+
+.slide__content-middle--longTermDebt {
+  color: $purple;
 }
 
 @-webkit-keyframes slide {

@@ -15,7 +15,7 @@ class Carousel extends Component {
   }
 
   componentDidMount() {
-    this.animation = setInterval(() => this.setIndex(this.state.slideIndex + 1), 15000)
+    this.animation = setInterval(() => this.setIndex(this.state.slideIndex + 1), 5000)
   }
 
   componentWillUnmount() {
