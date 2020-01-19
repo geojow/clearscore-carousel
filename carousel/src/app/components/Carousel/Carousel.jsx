@@ -1,46 +1,76 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types'
-import bemHelper from '../../utils/bem';
-import Slide from '../Slide/Slide'
-import SlideSelector from '../SlideSelector/SlideSelector'
-import './carousel.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import bemHelper from "../../utils/bem";
+import Slide from "../Slide/Slide";
+import SlideSelector from "../SlideSelector/SlideSelector";
+import "./carousel.scss";
 
-const cn = bemHelper({ block: 'carousel' });
+const cn = bemHelper({ block: "carousel" });
 
 class Carousel extends Component {
   state = {
     slideIndex: 0,
     slides: [],
     numberOfSlides: 0
-  }
+  };
 
   componentDidMount() {
-    this.animation = setInterval(() => this.setIndex(this.state.slideIndex + 1), 5000)
+    this.animation = setInterval(
+      () => this.setIndex(this.state.slideIndex + 1),
+      5000
+    );
   }
 
   componentWillUnmount() {
-    clearInterval(this.animation)
+    clearInterval(this.animation);
   }
 
   componentWillReceiveProps(props) {
     const { creditReport } = props;
-    const slides = creditReport ? [{
-      id: 'scoreIndicator',
-      upper: "Your credit score is",
-      middle: creditReport.score.toString(),
-      lower: `out of ${creditReport.maxScoreValue}`,
-      progress: Math.floor((creditReport.score / creditReport.maxScoreValue) * 100)
-    }, {
-      id: 'longTermDebt',
-      upper: 'Your long term debt total',
-      middle: `£${creditReport.currentLongTermDebt}`,
-      lower: creditReport.changeInLongTermDebt === 0 ? "No change from last month" : creditReport.changeInLongTermDebt < 0 ? `Down ${creditReport.changeInLongTermDebt} from last month` : `Up ${(creditReport.changeInLongTermDebt)} from last month`,
-      progress: null
-    }] : []
+    const slides = creditReport
+      ? [
+          {
+            id: "scoreIndicator",
+            upper: "Your credit score is",
+            middle: creditReport.score.toString(),
+            lower: (
+              <>
+                out of <b>{creditReport.maxScoreValue}</b>
+              </>
+            ),
+            progress: Math.floor(
+              (creditReport.score / creditReport.maxScoreValue) * 100
+            )
+          },
+          {
+            id: "longTermDebt",
+            upper: "Your long term debt total",
+            middle: `£${creditReport.currentLongTermDebt.toLocaleString()}`,
+            lower:
+              creditReport.changeInLongTermDebt === 0 ? (
+                "No change from last month"
+              ) : creditReport.changeInLongTermDebt < 0 ? (
+                <>
+                  Down{" "}
+                  <b>
+                    £
+                    {creditReport.changeInLongTermDebt
+                      .toLocaleString()
+                      .replace("-", "")}
+                  </b>{" "}
+                  from last month
+                </>
+              ) : (
+                `Up ${creditReport.changeInLongTermDebt} from last month`
+              ),
+            progress: null
+          }
+        ]
+      : [];
     this.setState({
       slides,
       numberOfSlides: slides.length
-    })
+    });
   }
 
   setIndex = index => {
@@ -52,7 +82,7 @@ class Carousel extends Component {
   render() {
     const { slideIndex, slides, numberOfSlides } = this.state;
     return (
-      <ul className={cn('container')}>
+      <ul className={cn("container")}>
         <Slide slide={slides[slideIndex]} />
         <SlideSelector
           numberOfSlides={numberOfSlides}
@@ -60,7 +90,7 @@ class Carousel extends Component {
           setSlide={this.setIndex}
         />
       </ul>
-    )
+    );
   }
 }
 
@@ -69,8 +99,8 @@ Carousel.propTypes = {
     score: PropTypes.number.isRequired,
     maxScoreValue: PropTypes.number.isRequired,
     currentLongTermDebt: PropTypes.number.isRequired,
-    changeInLongTermDebt: PropTypes.number.isRequired,
+    changeInLongTermDebt: PropTypes.number.isRequired
   })
-}
+};
 
 export default Carousel;
