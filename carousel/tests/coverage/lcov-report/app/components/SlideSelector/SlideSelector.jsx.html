@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for app/components/Slide/Slide.jsx</title>
+    <title>Code coverage report for app/components/SlideSelector/SlideSelector.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">app/components/Slide</a> Slide.jsx
+      <a href="../../../index.html">All files</a> / <a href="index.html">app/components/SlideSelector</a> SlideSelector.jsx
     </h1>
     <div class='clearfix'>
     </div>
@@ -46,7 +46,10 @@
 21
 22
 23
-24</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+24
+25
+26
+27</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -54,9 +57,14 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -67,31 +75,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react'
-import PropTypes from 'prop-types'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+import PropTypes from "prop-types";
 import bemHelper from '../../utils/bem';
-import './slide.scss';
+import "./slideselector.scss";
 &nbsp;
-const cn = bemHelper({ block: 'slide' });
+const cn = bemHelper({ block: 'slide-selector' })
 &nbsp;
-const Slide = ({ slide }) =&gt;
-  &lt;li className={cn('container')}&gt;
-    &lt;p className={cn("content-upper")}&gt;{slide ? slide.upper : ''}&lt;/p&gt;
-    &lt;p className={cn("content-middle")}&gt;{slide ? slide.middle : 'Loading'}&lt;/p&gt;
-    &lt;p className={cn("content-lower")}&gt;{slide ? slide.lower : ''}&lt;/p&gt;
-  &lt;/li&gt;
+const SlideSelector = ({ numberOfSlides, currentSlide, setSlide }) =&gt; (
+  &lt;ul className={cn('container')}&gt;
+    {[...Array(numberOfSlides).keys()].map((number, index) =&gt; (
+      &lt;li
+        className={`${cn('item')} ${currentSlide === index ? `${cn('item-active')}` : ""}`}
+        key={number}
+        onClick={() =&gt; setSlide(number)}
+      &gt;&lt;/li&gt;
+    ))}
+  &lt;/ul&gt;
+);
 &nbsp;
-Slide.propTypes = {
-  slide: PropTypes.shape({
-    upper: PropTypes.string.isRequired,
-    middle: PropTypes.string.isRequired,
-    lower: PropTypes.string.isRequired
-  })
+SlideSelector.propTypes = {
+  numberOfSlides: PropTypes.number.isRequired,
+  currentSlide: PropTypes.number.isRequired,
+  setSlide: PropTypes.func.isRequired
 }
 &nbsp;
-export default Slide;
+export default SlideSelector;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

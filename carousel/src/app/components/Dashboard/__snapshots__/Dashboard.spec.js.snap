@@ -16,7 +16,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <Carousel />,
+      "children": <Carousel
+        creditReport={undefined}
+      />,
       "className": "dashboard__container",
     },
     "ref": null,
@@ -24,7 +26,9 @@ ShallowWrapper {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
-      "props": Object {},
+      "props": Object {
+        "creditReport": undefined,
+      },
       "ref": null,
       "rendered": null,
       "type": [Function],
@@ -37,7 +41,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": <Carousel />,
+        "children": <Carousel
+          creditReport={undefined}
+        />,
         "className": "dashboard__container",
       },
       "ref": null,
@@ -45,7 +51,9 @@ ShallowWrapper {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
-        "props": Object {},
+        "props": Object {
+          "creditReport": undefined,
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],

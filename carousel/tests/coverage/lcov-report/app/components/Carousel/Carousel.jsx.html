@@ -21,7 +21,7 @@
     <div class='clearfix'>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -46,7 +46,50 @@
 21
 22
 23
-24</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -55,12 +98,51 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -70,25 +152,66 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import bemHelper from '../../utils/bem';
 import Slide from '../Slide/Slide'
+import SlideSelector from '../SlideSelector/SlideSelector'
 import './carousel.scss';
 &nbsp;
 const cn = bemHelper({ block: 'carousel' });
 &nbsp;
 class Carousel extends Component {
-  render() {
-    const slide = {
+  state = {
+    slideIndex: 0,
+    slides: [],
+    numberOfSlides: 0
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  co</span>mponentWillReceiveProps(props) {
+    const { creditReport } = <span class="cstat-no" title="statement not covered" >props;</span>
+    const slides = <span class="cstat-no" title="statement not covered" >creditReport ? [{</span>
       upper: "Your credit score is",
-      middle: '350',
-      lower: "out of 700"
-    }
+      middle: creditReport.score.toString(),
+      lower: `out of ${creditReport.maxScoreValue}`
+    }, {
+      upper: 'Your long term debt total',
+      middle: `£${creditReport.currentLongTermDebt}`,
+      lower: creditReport.changeInLongTermDebt === 0 ? "No change from last month" : creditReport.changeInLongTermDebt &lt; 0 ? `Down ${creditReport.changeInLongTermDebt} from last month` : `Up ${(creditReport.changeInLongTermDebt)} from last month`
+    }] : []
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      slides,
+      numberOfSlides: slides.length
+    })
+  }
+&nbsp;
+  setIndex = index =&gt; {
+    const { numberOfSlides } = this.state;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (index &gt;= numberOfSlides) <span class="cstat-no" title="statement not covered" >index = 0;</span>
+    this.setState({ slideIndex: index });
+  };
+&nbsp;
+  render() {
+    const { slideIndex, slides, numberOfSlides } = this.state;
     return (
       &lt;ul className={cn('container')}&gt;
-        &lt;Slide slide={slide} /&gt;
+        &lt;Slide slide={slides[slideIndex]} /&gt;
+        &lt;SlideSelector
+          numberOfSlides={numberOfSlides}
+          currentSlide={slideIndex}
+          setSlide={this.setIndex}
+        /&gt;
       &lt;/ul&gt;
     )
   }
+}
+&nbsp;
+Carousel.propTypes = {
+  creditReport: PropTypes.shape({
+    score: PropTypes.number.isRequired,
+    maxScoreValue: PropTypes.number.isRequired,
+    currentLongTermDebt: PropTypes.number.isRequired,
+    changeInLongTermDebt: PropTypes.number.isRequired,
+  })
 }
 &nbsp;
 export default Carousel;
@@ -98,7 +221,7 @@ export default Carousel;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jan 19 2020 12:27:45 GMT+0000 (GMT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jan 19 2020 13:53:24 GMT+0000 (GMT)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

@@ -1,0 +1,36 @@
+.slide-selector__container {
+  list-style: none;
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+}
+
+
+.slide-selector__item:hover {
+  background-color: #fff;
+  height: 5px;
+  width: 5px;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+
+.slide-selector__item-active {
+  background-color: #fff;
+  border: solid 1px #fff;
+  height: 5px;
+  width: 5px;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+
+
+
+.slide-selector__item {
+  border: solid 1px #fff;
+  height: 5px;
+  width: 5px;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+
+

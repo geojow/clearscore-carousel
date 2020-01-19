@@ -1,7 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Carousel from './Carousel';
 import Slide from '../Slide/Slide';
+import SlideSelector from '../SlideSelector/SlideSelector';
 
 describe('Carousel', () => {
   let wrapper;
@@ -12,7 +13,50 @@ describe('Carousel', () => {
     expect(wrapper.find('ul').length).toEqual(1);
   })
 
-  it('should render a Slide component', () => {
-    expect(wrapper.containsMatchingElement(<Slide />)).toEqual(true)
-  })
+  it('should render a Slide and SlideSelector component', () => {
+    expect(wrapper.containsAllMatchingElements([
+      <Slide />,
+      <SlideSelector
+        numberOfSlides={wrapper.instance().state.numberOfSlides}
+        currentSlide={wrapper.instance().state.slideIndex}
+        setSlide={wrapper.instance().setIndex}
+      />
+    ])).toEqual(true)
+  });
 })
+
+describe('mounted Carousel', () => {
+  let wrapper;
+
+  beforeEach(() => wrapper = mount(<Carousel />));
+
+  it('it calls setIndex when a SlideSelector is clicked', () => {
+    wrapper.setState({ slides: [{ upper: "", middle: "", lower: "" }], numberOfSlides: 1 })
+    const spy = jest.spyOn(wrapper.instance(), 'setIndex');
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper.find('.slide-selector__item').first().simulate('click')
+    expect(spy).toHaveBeenCalledTimes(1);
+  })
+});
+
+describe('setIndex', () => {
+  let wrapper;
+
+  beforeEach(() => wrapper = mount(<Carousel />));
+
+  it('it updates slideIndex', () => {
+    wrapper.setState({ slideIndex: 0, slides: [{ upper: "", middle: "", lower: "" }, { upper: "", middle: "", lower: "" }], numberOfSlides: 2 })
+    wrapper.instance().setIndex(1);
+    expect(wrapper.state('slideIndex')).toEqual(1);
+  });
+
+  it('it does not update slideIndex if you try to set the same index', () => {
+    wrapper.setState({ slideIndex: 1, slides: [{ upper: "", middle: "", lower: "" }, { upper: "", middle: "", lower: "" }], numberOfSlides: 2 })
+    wrapper.instance().setIndex(1);
+    expect(wrapper.state('slideIndex')).toEqual(1);
+  });
+
+
+});
+
