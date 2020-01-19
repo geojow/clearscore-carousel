@@ -8,8 +8,10 @@
   align-items: center;
   border-radius: 50%;
   font-family: Helvetica, sans-serif;
-
-  color: white
+  color: white;
+  right: -375px;
+  -webkit-animation: slide 0.5s forwards;
+  animation: slide 0.5s forwards;
 }
 
 p {
@@ -26,3 +28,25 @@ p {
   font-weight: 100;
 }
 
+@-webkit-keyframes slide {
+  100% { right: 0; }
+}
+
+@keyframes slide {
+  100% { right: 0; }
+}
+
+// @keyframes slide {
+//   25% {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+//   75% {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+//   100% {
+//     transform: translateX(-350px);
+//     opacity: 1;
+//   }
+// }

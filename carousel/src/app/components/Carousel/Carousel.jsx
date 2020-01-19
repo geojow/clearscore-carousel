@@ -17,10 +17,12 @@ class Carousel extends Component {
   componentWillReceiveProps(props) {
     const { creditReport } = props;
     const slides = creditReport ? [{
+      id: 'scoreIndicator',
       upper: "Your credit score is",
       middle: creditReport.score.toString(),
       lower: `out of ${creditReport.maxScoreValue}`
     }, {
+      id: 'longTermDebt',
       upper: 'Your long term debt total',
       middle: `£${creditReport.currentLongTermDebt}`,
       lower: creditReport.changeInLongTermDebt === 0 ? "No change from last month" : creditReport.changeInLongTermDebt < 0 ? `Down ${creditReport.changeInLongTermDebt} from last month` : `Up ${(creditReport.changeInLongTermDebt)} from last month`

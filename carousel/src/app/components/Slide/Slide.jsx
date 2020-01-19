@@ -6,7 +6,7 @@ import './slide.scss';
 const cn = bemHelper({ block: 'slide' });
 
 const Slide = ({ slide }) =>
-  <li className={cn('container')}>
+  <li key={slide ? slide.id : ''} className={cn('container')}>
     <p className={cn("content-upper")}>{slide ? slide.upper : ''}</p>
     <p className={cn("content-middle")}>{slide ? slide.middle : 'Loading'}</p>
     <p className={cn("content-lower")}>{slide ? slide.lower : ''}</p>
@@ -14,6 +14,7 @@ const Slide = ({ slide }) =>
 
 Slide.propTypes = {
   slide: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     upper: PropTypes.string.isRequired,
     middle: PropTypes.string.isRequired,
     lower: PropTypes.string.isRequired
