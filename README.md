@@ -5,7 +5,7 @@ A simple web app showing an animated carousel that displays slides with informat
 ## Prerequisites
 
 - Node version >= 9.3.0
-- The `node-sass` package requires a different minimum version depending on which major version of node you are using. You can see the different version of the package you need on their website [here](https://github.com/sass/node-sass). (I chose to use Node Version 9.3.0, this is discussed in this [section](#assumptions-/-descisions)).
+- The `node-sass` package requires a different minimum version depending on which major version of node you are using. You can see the different version of the package you need on their website [here](https://github.com/sass/node-sass). (I chose to use Node Version 9.3.0, this is discussed in this [section](#assumptions-and-descisions)).
 - Yarn is used as the package manager
 
 ## Getting Started
@@ -24,7 +24,7 @@ A simple web app showing an animated carousel that displays slides with informat
 
 - Run: `yarn test`
 
-## Assumptions / Descisions
+## Assumptions and Decisions
 
 I chose to not update any of the existing packages, and instead used `nvm` to use the correct node version to run this app (9.3.0).
 
