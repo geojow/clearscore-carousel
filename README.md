@@ -1,40 +1,39 @@
-![ClearScore](https://github.com/ClearScore/tech-screen/blob/master/assets/clearscore.png)
+# Carousel
 
-# Tech-screen
+A simple web app showing an animated carousel that displays slides with information about a users credit report.
 
-This repo contains multiple apps.  The concept is to enable developers to pick and choose which tech problem(s) they would like to solve.
+## Prerequisites
 
-But first, a little bit about us...
+- Node version >= 9.3.0
+- The `node-sass` package requires a different minimum version depending on which major version of node you are using. You can see the different version of the package you need on their website [here](https://github.com/sass/node-sass). (I chose to use Node Version 9.3.0, this is discussed in this [section](#assumptions-/-descisions)).
+- Yarn is used as the package manager
 
-## About ClearScore
+## Getting Started
 
-At ClearScore we are not limited to the technology stack we can use. Our systems evolve quickly and choosing the right tools for the job is an important factor within our development cycle.
+- Run: `git clone https://github.com/geojow/clearscore-carousel.git`
+- Run: `cd clearscore-carousel/carousel`
+- Run: `yarn install`
 
-We are currently working with...
- * ES6 and ES7 throughout the codebase
- * React with Redux
- * Isomorphic / Universal SPA
- * PostCSS + CSS-modules for styling (legacy apps use SASS and BEM)
- * MEN (Mongo, Express, Node) stack websites
- * We build using the Webpack module bundler and Lerna package manager
- * Jest + Enzyme for Unit testing
- * We currently support the latest 2 versions of Edge, Chrome, Firefox and Safari (plus ie11)
+## Running the app
 
-## What we're looking for
+- Run: `yarn start:webpack`
+- Run: `yarn start:dev` _(in a new terminal)_
+- Goto: `http://localhost:3000/`
 
- * A stylish solution
- * Clean, concise code
- * Unit Tests
- * Demonstration of CSS knowledge
- * A detailed README explaining assumptions / decisions
- * A live site we can see
+## Running the tests
 
-## Apps
+- Run: `yarn test`
 
- > Each app contains 1 (or more) tech challenge(s). Please pick and choose one or more to complete.
+## Assumptions / Descisions
 
- * [Carousel](/carousel) \[4 hours] \[Front-end] \[React]
-   * A Front-end focused app which requires a new carousel
- * [Idea Board](/idea-board) \[2-3 hours] \[Front-end] \[React]
-   * Idea board app where you can create, update, delete and sort items.
+I chose to not update any of the existing packages, and instead used `nvm` to use the correct node version to run this app (9.3.0).
 
+I developed this app using a TDD approach, first writing the tests for a component before creating the component and implementing it's features. This has resulted in a well tested app.
+
+## Improvements
+
+Given more time, I would like to:
+
+- Add end-to-end tests to this app using Cypress
+- Add a bouncing effect to the end of the animation of the arc
+- Improve code coverage
