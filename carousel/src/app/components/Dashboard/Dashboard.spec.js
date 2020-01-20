@@ -6,7 +6,9 @@ import Carousel from "../Carousel/Carousel";
 describe("Dashboard", () => {
   let wrapper;
 
-  beforeEach(() => (wrapper = shallow(<Dashboard />)));
+  beforeEach(
+    () => (wrapper = shallow(<Dashboard />, { disableLifecycleMethods: true }))
+  );
 
   it("should render correctly", () => expect(wrapper).toMatchSnapshot());
 
