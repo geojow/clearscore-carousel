@@ -15,6 +15,8 @@ describe("Slide", () => {
       ))
   );
 
+  it("should render correctly", () => expect(wrapper).toMatchSnapshot());
+
   it("should render a <li />", () => {
     expect(wrapper.find("li").length).toEqual(1);
   });

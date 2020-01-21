@@ -16,6 +16,8 @@ describe("SlideSelector", () => {
       ))
   );
 
+  it("should render correctly", () => expect(wrapper).toMatchSnapshot());
+
   it("should render a <ul />", () => {
     expect(wrapper.find("ul").length).toEqual(1);
   });

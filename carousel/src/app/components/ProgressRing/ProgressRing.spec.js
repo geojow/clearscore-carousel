@@ -7,6 +7,8 @@ describe("ProgressRing", () => {
 
   beforeEach(() => (wrapper = shallow(<ProgressRing progress={0} />)));
 
+  it("should render correctly", () => expect(wrapper).toMatchSnapshot());
+
   it("should render a <svg />", () => {
     expect(wrapper.find("svg").length).toEqual(1);
   });

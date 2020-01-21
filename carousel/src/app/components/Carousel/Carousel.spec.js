@@ -13,6 +13,8 @@ describe("Carousel", () => {
     expect(wrapper.find("ul").length).toEqual(1);
   });
 
+  it("should render correctly", () => expect(wrapper).toMatchSnapshot());
+
   it("should render a Slide and SlideSelector component", () => {
     expect(
       wrapper.containsAllMatchingElements([

@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressRing should render correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ProgressRing
+    progress={0}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <circle
+        cx={185}
+        cy={185}
+        fill="transparent"
+        r={177}
+        strokeDasharray={1112.1237993707869}
+        strokeWidth={4}
+        style={
+          Object {
+            "--test": "black",
+            "strokeDashoffset": 1112.1237993707869,
+          }
+        }
+      />,
+      "className": "progress-ring",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "cx": 185,
+        "cy": 185,
+        "fill": "transparent",
+        "r": 177,
+        "strokeDasharray": 1112.1237993707869,
+        "strokeWidth": 4,
+        "style": Object {
+          "--test": "black",
+          "strokeDashoffset": 1112.1237993707869,
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": "circle",
+    },
+    "type": "svg",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <circle
+          cx={185}
+          cy={185}
+          fill="transparent"
+          r={177}
+          strokeDasharray={1112.1237993707869}
+          strokeWidth={4}
+          style={
+            Object {
+              "--test": "black",
+              "strokeDashoffset": 1112.1237993707869,
+            }
+          }
+        />,
+        "className": "progress-ring",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "cx": 185,
+          "cy": 185,
+          "fill": "transparent",
+          "r": 177,
+          "strokeDasharray": 1112.1237993707869,
+          "strokeWidth": 4,
+          "style": Object {
+            "--test": "black",
+            "strokeDashoffset": 1112.1237993707869,
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "circle",
+      },
+      "type": "svg",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
